@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Task</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/earn.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="back-row">
+      <a href="../earn.html" class="back-btn">←</a>
+    </div>
+
+    <div id="detail-root">
+      <div class="detail-hero">
+        <div class="task-icon skel" style="width:56px;height:56px"></div>
+        <div class="skel" style="height:22px;width:60%;margin-top:12px"></div>
+      </div>
+    </div>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+
+<div class="sheet-overlay" id="proof-overlay">
+  <div class="sheet">
+    <h2>Submit Proof</h2>
+    <div class="field">
+      <label for="proof-text">Describe what you completed</label>
+      <textarea class="input" id="proof-text" rows="4" style="border:1px solid var(--border);border-radius:var(--radius-sm)"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block" id="submit-proof-btn">Submit Proof</button>
+    <button class="btn btn-ghost btn-block" id="cancel-proof-btn" style="margin-top:var(--space-2)">Cancel</button>
+  </div>
+</div>
+
+<script type="module" src="../js/pages/task-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { cursorValuesFromItem, decodeCursor, encodeCursor, normalizePage, stableOrderBy } from "../src/firestore.js";
+import { collectEligibleTaskPage, memberTaskOrder } from "../src/task-feed.js";
+
+test("page sizes are bounded to protect Firestore query costs", () => { assert.equal(normalizePage(undefined), 20); assert.equal(normalizePage(0), 20); assert.equal(normalizePage(500), 50); assert.equal(normalizePage(7), 7); });
+test("cursors are opaque and round-trip ordered values", () => { const cursor = encodeCursor(["2026-08-25T00:00:00.000Z", "task-42"]); assert.notEqual(cursor, "2026-08-25T00:00:00.000Z"); assert.deepEqual(decodeCursor(cursor), ["2026-08-25T00:00:00.000Z", "task-42"]); });
+test("invalid cursors are rejected rather than silently reusing the first page", () => { assert.throws(() => decodeCursor("not-valid-***"), { code: "invalid_cursor" }); });
+test("all ordered pages use document name as a deterministic final tie-breaker", () => { const order = stableOrderBy([{ field: "createdAt", direction: "DESCENDING" }]); assert.deepEqual(order, [{ field: "createdAt", direction: "DESCENDING" }, { field: "__name__", direction: "DESCENDING" }]); assert.deepEqual(cursorValuesFromItem(order, { id: "task-42", createdAt: "2026-08-25T00:00:00.000Z" }), ["2026-08-25T00:00:00.000Z", "task-42"]); });
+test("member task feeds continue through ineligible pages until they fill the requested page", async () => { const pages = new Map([[null, { items: [{ id: "a" }, { id: "b" }], nextCursor: "cursor-1" }], ["cursor-1", { items: [{ id: "c" }, { id: "d" }], nextCursor: null }]]); const result = await collectEligibleTaskPage({ cursor: null, limit: 2, scanLimit: 50, isEligible: (task) => ["c", "d"].includes(task.id), queryPage: async ({ cursor }) => pages.get(cursor) }); assert.deepEqual(result.items.map((item) => item.id), ["c", "d"]); assert.ok(result.nextCursor); assert.deepEqual(memberTaskOrder, [{ field: "createdAt", direction: "DESCENDING" }]); });

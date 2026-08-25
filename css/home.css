@@ -1,0 +1,44 @@
+.balance-card{padding:var(--space-6) var(--space-5);position:relative;overflow:hidden}
+.balance-card::after{
+  content:"";position:absolute;top:-40%;right:-20%;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,var(--accent-amber) 0%,transparent 70%);opacity:.18;pointer-events:none;
+}
+.balance-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-2)}
+.balance-label{font-size:.8rem;color:var(--text-muted);font-weight:600}
+.balance-amount{font-family:var(--font-mono);font-size:2.4rem;font-weight:600;line-height:1.1;letter-spacing:-.02em}
+.balance-coins{font-size:.8rem;color:var(--text-faint);margin-top:2px;font-family:var(--font-mono)}
+.balance-actions{display:flex;gap:var(--space-3);margin-top:var(--space-5)}
+.balance-actions .btn{flex:1}
+
+.quick-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2)}
+.qa{
+  display:flex;flex-direction:column;align-items:center;gap:6px;padding:var(--space-3) var(--space-1);
+  border-radius:var(--radius-md);background:var(--surface);border:1px solid var(--border);
+  font-size:.72rem;font-weight:600;color:var(--text-muted);transition:transform var(--dur-fast) var(--ease);
+}
+.qa:active{transform:scale(.95)}
+.qa-icon{font-size:1.3rem}
+
+.reco-list{display:flex;flex-direction:column;gap:var(--space-3)}
+.reco-card{
+  display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+}
+.reco-icon{width:42px;height:42px;border-radius:var(--radius-sm);background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.reco-body{flex:1;min-width:0}
+.reco-title{font-size:.9rem;font-weight:600}
+.reco-meta{font-size:.76rem;color:var(--text-faint);margin-top:1px}
+.reco-reward{font-family:var(--font-mono);font-weight:600;font-size:.9rem;color:var(--accent-mint-ink)}
+[data-theme="dark"] .reco-reward,body:not([data-theme="light"]) .reco-reward{color:var(--accent-mint)}
+.reco-cta{font-size:.78rem;font-weight:700;color:var(--accent-amber-ink)}
+[data-theme="dark"] .reco-cta,body:not([data-theme="light"]) .reco-cta{color:var(--accent-amber)}
+
+.bonus-card{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5)}
+.bonus-title{font-size:.85rem;font-weight:600}
+.bonus-day{font-size:.76rem;color:var(--text-faint);margin:2px 0 6px}
+.bonus-dots{letter-spacing:2px;color:var(--accent-amber);font-size:.8rem}
+.bonus-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.bonus-amount{font-size:.85rem;color:var(--text-muted)}
+
+.trust-strip{display:flex;justify-content:space-between;gap:var(--space-2);padding:var(--space-2) 2px}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:.7rem;color:var(--text-faint);font-weight:600;flex:1;justify-content:center;text-align:center}

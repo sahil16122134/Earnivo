@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/components/modal.css">
+<link rel="stylesheet" href="css/components/toast.css">
+<link rel="stylesheet" href="css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="profile-head">
+      <img class="avatar" id="profile-avatar" src="assets/avatar-placeholder.svg" alt="">
+      <h2 id="profile-name">—</h2>
+      <div class="uid" id="profile-uid">—</div>
+    </div>
+
+    <div class="stack">
+      <div>
+        <div class="menu-label">Account</div>
+        <div class="menu-group">
+          <a class="menu-item" href="pages/personal-details.html">Personal details<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/payment-methods.html">Payment methods<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/security.html">Security<span class="chev">›</span></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-label">Activity</div>
+        <div class="menu-group">
+          <a class="menu-item" href="pages/transactions.html">Transactions<span class="chev">›</span></a>
+          <a class="menu-item" href="wallet.html">Withdrawals<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/referral.html">Referrals<span class="chev">›</span></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-label">Support</div>
+        <div class="menu-group">
+          <a class="menu-item" href="pages/support/faq.html">FAQ<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/support/help.html">Help Center<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/support/contact.html">Contact Us<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/support/contact.html">Report a Problem<span class="chev">›</span></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-label">Legal</div>
+        <div class="menu-group">
+          <a class="menu-item" href="pages/legal/privacy.html">Privacy Policy<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/legal/terms.html">Terms & Conditions<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/legal/disclaimer.html">Disclaimer<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/legal/cookies.html">Cookie Policy<span class="chev">›</span></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-label">Other</div>
+        <div class="menu-group">
+          <div class="menu-item">Theme<button class="icon-btn" data-theme-toggle style="width:32px;height:32px">🌙</button></div>
+          <a class="menu-item" href="pages/notifications.html">Notifications<span class="chev">›</span></a>
+          <a class="menu-item" href="pages/about.html">About<span class="chev">›</span></a>
+        </div>
+      </div>
+
+      <button class="btn btn-ghost btn-block" id="logout-btn">Log out</button>
+    </div>
+
+    <footer class="site-footer" id="site-footer"></footer>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<script type="module" src="js/pages/profile.js"></script>
+</body>
+</html>

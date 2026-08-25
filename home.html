@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/components/modal.css">
+<link rel="stylesheet" href="css/components/toast.css">
+<link rel="stylesheet" href="css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+
+  <main class="main-col">
+    <header class="topbar">
+      <div>
+        <div class="hello" id="hello-name">Hi, there</div>
+        <div class="hello-sub">Ready to earn?</div>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"></button>
+        <a class="icon-btn" href="pages/notifications.html" aria-label="Notifications" id="bell-btn"></a>
+        <a href="profile.html"><img class="avatar" id="avatar-img" src="assets/avatar-placeholder.svg" alt="Profile"></a>
+      </div>
+    </header>
+
+    <section class="stack">
+
+      <!-- Balance card -->
+      <div class="card-glass balance-card" id="balance-card">
+        <div class="balance-top">
+          <span class="balance-label">Available balance</span>
+          <span class="pill pill-success" id="earned-today-pill">+₹0.00 today</span>
+        </div>
+        <div class="balance-amount mono" id="balance-amount">
+          <span class="skel" style="width:150px;height:38px;display:inline-block"></span>
+        </div>
+        <div class="balance-coins" id="balance-coins">&nbsp;</div>
+        <div class="balance-actions">
+          <a href="wallet.html?action=withdraw" class="btn btn-primary">Withdraw</a>
+          <a href="pages/transactions.html" class="btn btn-ghost">History</a>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="quick-actions">
+        <a href="earn.html" class="qa"><span class="qa-icon">⚡</span>Earn</a>
+        <a href="wallet.html?action=withdraw" class="qa"><span class="qa-icon">💸</span>Withdraw</a>
+        <a href="pages/referral.html" class="qa"><span class="qa-icon">🤝</span>Refer</a>
+        <a href="pages/daily-bonus.html" class="qa"><span class="qa-icon">🎁</span>Bonus</a>
+      </div>
+
+      <!-- Recommended earning -->
+      <div>
+        <div class="section-head">
+          <div>
+            <h2>Recommended for you</h2>
+            <div class="sub">Based on your activity</div>
+          </div>
+          <a class="link-more" href="earn.html">View all →</a>
+        </div>
+        <div id="recommended-list" class="reco-list">
+          <div class="reco-card skel" style="height:76px"></div>
+          <div class="reco-card skel" style="height:76px"></div>
+        </div>
+      </div>
+
+      <!-- Daily bonus compact -->
+      <a href="pages/daily-bonus.html" class="card bonus-card" id="bonus-card">
+        <div>
+          <div class="bonus-title">Daily bonus</div>
+          <div class="bonus-day" id="bonus-day">Day — of 7</div>
+          <div class="bonus-dots" id="bonus-dots"></div>
+        </div>
+        <div class="bonus-right">
+          <div class="bonus-amount mono" id="bonus-amount">—</div>
+          <span class="btn btn-sm btn-primary" id="bonus-claim-btn">Claim</span>
+        </div>
+      </a>
+
+      <ad-slot placement="home-below-daily-bonus"></ad-slot>
+
+      <!-- Trust strip -->
+      <div class="trust-strip">
+        <div class="trust-item"><span>🔒</span>Secure account</div>
+        <div class="trust-item"><span>📒</span>Transparent ledger</div>
+        <div class="trust-item"><span>✅</span>Clear reward terms</div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<nav class="bottom-nav" id="bottom-nav"></nav>
+
+<script type="module" src="js/pages/home.js"></script>
+</body>
+</html>

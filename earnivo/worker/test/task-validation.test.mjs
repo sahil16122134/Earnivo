@@ -1,0 +1,6 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { isHttpsDestination, normaliseCountryCode, normaliseHttpsDestination, tryNormaliseCountryCode } from "../src/task-validation.js";
+
+test("task destinations must be absolute HTTPS URLs without embedded credentials", () => { assert.equal(normaliseHttpsDestination(" https://offers.example/earn?campaign=7 "), "https://offers.example/earn?campaign=7"); assert.equal(isHttpsDestination("https://offers.example"), true); assert.equal(isHttpsDestination("http://offers.example"), false); assert.equal(isHttpsDestination("javascript:alert(1)"), false); assert.equal(isHttpsDestination("https://user:pass@offers.example"), false); });
+test("task and member countries normalize to two-letter uppercase codes", () => { assert.equal(normaliseCountryCode(" in "), "IN"); assert.equal(normaliseCountryCode("ALL", { allowAll: true }), "all"); assert.equal(normaliseCountryCode("", { allowEmpty: true }), ""); assert.throws(() => normaliseCountryCode("India"), { code: "invalid_country_code" }); assert.throws(() => normaliseCountryCode("IND"), { code: "invalid_country_code" }); assert.equal(tryNormaliseCountryCode("India"), null); });

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earnivo Admin — Submissions</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="admin-shell">
+  <nav class="admin-sidebar" id="admin-sidebar"></nav>
+  <div>
+    <header class="admin-topbar"><div><strong>Submissions</strong></div></header>
+    <main class="admin-main">
+      <div class="panel">
+        <div class="toolbar">
+          <div class="chip-row" id="status-chips"><button class="chip active" data-c="All">All</button><button class="chip" data-c="Pending">Pending</button><button class="chip" data-c="Approved">Approved</button><button class="chip" data-c="Rejected">Rejected</button><button class="chip" data-c="Flagged">Flagged</button></div>
+          <input type="search" id="search-input" placeholder="Search…" style="margin-left:auto">
+        </div>
+        <table>
+          <thead><tr><th>User</th><th>Task</th><th>Submitted</th><th>Reward</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="table-body"><tr><td colspan="6" class="empty-state">Loading…</td></tr></tbody>
+        </table>
+        <div class="card-list" id="card-list"></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script type="module" src="js/submissions.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/** Withdrawal policy derives only from platform settings; the daily counter reserves requested value atomically. */
+import { HttpError } from "./http.js";
+
+export function normalisePayoutMethod(value) { return String(value || "").trim().toLowerCase().slice(0, 40); }
+export function normalisePayoutReference(value) { const reference = String(value || "").trim().slice(0, 500); if (reference.length < 3 || /[\u0000-\u001F]/.test(reference)) throw new HttpError(400, "Provide a valid payout reference of at least three characters.", "invalid_payout_reference"); return reference; }
+export function withdrawalPolicy(settings = {}) { const minimumAmount = Math.max(0, Number(settings.minimumWithdrawal || 0)); const dailyAmountLimit = Math.max(0, Number(settings.dailyWithdrawalLimit || 0)); const enabledMethods = [...new Set((Array.isArray(settings.enabledPayoutMethods) ? settings.enabledPayoutMethods : []).map(normalisePayoutMethod).filter(Boolean))]; return { minimumAmount, dailyAmountLimit, enabledMethods }; }
+export function withdrawalDay(timestamp = new Date().toISOString()) { return new Date(timestamp).toISOString().slice(0, 10); }
+export function withdrawalDailyCounterId(userId, day) { return `withdrawal_${userId}_${day}`; }
+export function assertWithdrawalPolicy(policy, { method, amount, dailyReservedAmount = 0 }) { if (amount < policy.minimumAmount) throw new HttpError(400, `The minimum withdrawal is ${policy.minimumAmount}.`, "withdrawal_below_minimum"); if (policy.enabledMethods.length && !policy.enabledMethods.includes(method)) throw new HttpError(400, "This payout method is not currently enabled.", "payout_method_disabled"); if (policy.dailyAmountLimit && dailyReservedAmount + amount > policy.dailyAmountLimit) throw new HttpError(409, "The daily withdrawal limit has been reached.", "daily_withdrawal_limit_reached"); }

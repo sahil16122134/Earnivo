@@ -1,0 +1,10 @@
+{
+  "name": "earnivo-platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:frontend": "node --test frontend/test/*.test.mjs",
+    "test:worker": "node --test worker/test/*.test.mjs",
+    "test": "npm run test:frontend && npm run test:worker"
+  }
+}

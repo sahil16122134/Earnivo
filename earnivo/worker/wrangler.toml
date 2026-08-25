@@ -1,0 +1,9 @@
+name = "earnivo-worker"
+main = "src/index.js"
+compatibility_date = "2025-02-01"
+
+[vars]
+# A comma-separated production allowlist. During local development, add localhost origins.
+ALLOWED_ORIGINS = "https://REPLACE_WITH_YOUR_PAGES_DOMAIN.pages.dev"
+PUBLIC_APP_URL = "https://REPLACE_WITH_YOUR_PAGES_DOMAIN.pages.dev"
+POSTBACK_MAX_AGE_SECONDS = "300"

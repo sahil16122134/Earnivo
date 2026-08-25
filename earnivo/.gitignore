@@ -1,0 +1,19 @@
+# Dependency and build output
+node_modules/
+.wrangler/
+dist/
+coverage/
+*.log
+
+# Local configuration and credentials
+.env
+.dev.vars
+service-account*.json
+firebase-debug.log
+firestore-debug.log
+
+# OS and editor output
+.DS_Store
+.idea/
+.vscode/
+

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Notifications</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="back-row"><a href="../home.html" class="back-btn">←</a></div>
+    <div class="page-title"><h1>Notifications</h1></div>
+    <div class="stack" style="gap:var(--space-3)">
+      <div class="chip-row">
+        <button class="chip active">All</button>
+        <button class="chip">Rewards</button>
+        <button class="chip">Withdrawals</button>
+        <button class="chip">System</button>
+      </div>
+      <div class="card" id="notif-list" style="padding:0">
+        <div class="skel" style="height:60px;margin:16px"></div>
+      </div>
+    </div>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<script type="module" src="../js/pages/notifications.js"></script>
+</body>
+</html>

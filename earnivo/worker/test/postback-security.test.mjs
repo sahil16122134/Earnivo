@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { hmacSignature, providerTransactionId, providerTransactionLedgerId, terminalPostbackStatuses, validateTimestamp } from "../src/postbacks.js";
+
+test("HMAC signatures bind the exact timestamp and raw JSON body", async () => { const signature = await hmacSignature("provider-secret", "1760000000", "{\"transactionId\":\"tx-1\"}"); assert.equal(signature.length, 64); assert.notEqual(signature, await hmacSignature("provider-secret", "1760000001", "{\"transactionId\":\"tx-1\"}")); assert.notEqual(signature, await hmacSignature("provider-secret", "1760000000", "{\"transactionId\":\"tx-2\"}")); });
+test("postback timestamps must be recent integer Unix seconds", () => { assert.equal(validateTimestamp("1760000000", 1760000000 * 1000, 300), 1760000000); assert.throws(() => validateTimestamp("1759999000", 1760000000 * 1000, 300), { code: "stale_postback" }); assert.throws(() => validateTimestamp("not-a-time", 1760000000 * 1000, 300), { code: "invalid_postback_timestamp" }); });
+test("provider transaction ledger identity uses the immutable provider transaction ID", () => { assert.equal(providerTransactionId(" tx-1 "), "tx-1"); assert.notEqual(providerTransactionId("tx-1"), providerTransactionId("tx-2")); });
+test("provider transaction identifiers cannot introduce Firestore document paths", () => { assert.throws(() => providerTransactionId("provider/transaction"), { code: "invalid_provider_transaction_id" }); });
+test("provider-scoped ledger IDs allow different providers to use the same transaction identifier", () => { assert.equal(providerTransactionLedgerId("provider-a", "tx-1"), "provider-a__tx-1"); assert.notEqual(providerTransactionLedgerId("provider-a", "tx-1"), providerTransactionLedgerId("provider-b", "tx-1")); });
+test("only terminal settlement outcomes consume the provider transaction ledger identity", () => { assert.deepEqual(terminalPostbackStatuses, ["approved", "rejected", "cancelled", "reversed"]); assert.equal(terminalPostbackStatuses.includes("verification"), false); });
