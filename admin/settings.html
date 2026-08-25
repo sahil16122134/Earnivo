@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earnivo Admin — Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="admin-shell">
+  <nav class="admin-sidebar" id="admin-sidebar"></nav>
+  <div>
+    <header class="admin-topbar"><div><strong>Settings</strong></div></header>
+    <main class="admin-main">
+      <div class="panel">
+        <div class="panel-head"><h3>Withdrawal settings</h3></div>
+        <div class="form-grid">
+          <div class="form-field"><label>Minimum withdrawal (₹)</label><input type="number" id="set-min-withdraw"></div>
+          <div class="form-field"><label>Daily withdrawal limit per user (₹)</label><input type="number" id="set-daily-limit"></div>
+          <div class="form-field"><label>Enabled payment methods</label>
+            <div style="display:flex;gap:14px;font-size:.85rem;align-items:center;flex-wrap:wrap">
+              <label><input type="checkbox" id="m-upi"> UPI</label>
+              <label><input type="checkbox" id="m-amazon"> Amazon</label>
+              <label><input type="checkbox" id="m-flipkart"> Flipkart</label>
+              <label><input type="checkbox" id="m-myntra"> Myntra</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Referral & bonus</h3></div>
+        <div class="form-grid">
+          <div class="form-field"><label>Referral reward (₹)</label><input type="number" id="set-referral"></div>
+          <div class="form-field"><label>Daily bonus base amount (₹)</label><input type="number" id="set-bonus"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Platform</h3></div>
+        <div class="form-grid">
+          <div class="form-field"><label>Support contact email</label><input type="email" id="set-support-email"></div>
+          <div class="form-field"><label>Maintenance mode</label>
+            <label style="font-size:.85rem"><input type="checkbox" id="set-maintenance"> Enabled</label>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="save-settings-btn">Save changes</button>
+      <p class="hint" id="save-status" style="margin-top:10px;font-size:.8rem;color:var(--text-muted)"></p>
+    </main>
+  </div>
+</div>
+<script type="module" src="js/settings.js"></script>
+</body>
+</html>

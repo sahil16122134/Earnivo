@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Wallet</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/components/modal.css">
+<link rel="stylesheet" href="css/components/toast.css">
+<link rel="stylesheet" href="css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="page-title"><h1>Wallet</h1></div>
+
+    <div class="stack">
+      <div class="hint" id="maintenance-banner" style="display:none;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);color:var(--accent-coral-ink)">Withdrawals are temporarily paused for maintenance. Please check back later.</div>
+      <div class="card-glass balance-card">
+        <div class="balance-label">Main balance</div>
+        <div class="balance-amount mono" id="wallet-balance"><span class="skel" style="width:140px;height:34px;display:inline-block"></span></div>
+        <div class="balance-coins" id="wallet-coins">&nbsp;</div>
+        <div class="balance-actions">
+          <button class="btn btn-primary" id="open-withdraw-btn">Withdraw</button>
+          <a class="btn btn-ghost" href="pages/transactions.html">Transaction history</a>
+        </div>
+      </div>
+
+      <div class="wallet-stats">
+        <div class="wallet-stat"><div class="v mono" id="stat-earned">—</div><div class="l">Total earned</div></div>
+        <div class="wallet-stat"><div class="v mono" id="stat-withdrawn">—</div><div class="l">Withdrawn</div></div>
+        <div class="wallet-stat"><div class="v mono" id="stat-pending">—</div><div class="l">Pending</div></div>
+      </div>
+
+      <div>
+        <div class="section-head">
+          <h2>Recent transactions</h2>
+          <a class="link-more" href="pages/transactions.html">View all →</a>
+        </div>
+        <div class="card" id="recent-txns">
+          <div class="skel" style="height:44px;margin-bottom:10px"></div>
+          <div class="skel" style="height:44px"></div>
+        </div>
+      </div>
+
+      <ad-slot placement="wallet-below-transactions"></ad-slot>
+    </div>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+
+<!-- Withdraw drawer -->
+<div class="sheet-overlay" id="withdraw-overlay">
+  <div class="sheet" id="withdraw-sheet">
+    <h2>Withdraw</h2>
+    <p class="hint" style="margin:-8px 0 var(--space-4)">Available: <strong id="withdraw-available">₹0.00</strong></p>
+
+    <div class="method-list" id="method-list">
+      <label class="method-row" data-method="upi"><span class="method-icon">🏦</span><div><strong>UPI</strong><div class="hint" style="margin:0">Direct to UPI ID</div></div></label>
+      <label class="method-row" data-method="amazon"><span class="method-icon">🎁</span><div><strong>Amazon Gift Card</strong></div></label>
+      <label class="method-row" data-method="flipkart"><span class="method-icon">🎁</span><div><strong>Flipkart Gift Card</strong></div></label>
+      <label class="method-row" data-method="myntra"><span class="method-icon">🎁</span><div><strong>Myntra Gift Card</strong></div></label>
+    </div>
+
+    <div id="upi-field" class="field" style="margin-top:var(--space-4);display:none">
+      <label for="upi-id">UPI ID</label>
+      <input class="input" id="upi-id" type="text" placeholder="yourname@upi">
+    </div>
+
+    <div class="field" style="margin-top:var(--space-4)">
+      <label for="withdraw-amount">Amount</label>
+      <input class="input" id="withdraw-amount" type="number" min="50" placeholder="₹0">
+      <div class="quick-amounts" id="quick-amounts">
+        <button data-amt="50">₹50</button><button data-amt="100">₹100</button>
+        <button data-amt="200">₹200</button><button data-amt="500">₹500</button>
+      </div>
+      <p class="hint" id="min-withdraw-hint">Minimum withdrawal: ₹50</p>
+    </div>
+
+    <div class="summary-row total"><span>You will receive</span><span id="receive-amount" class="mono">₹0.00</span></div>
+    <p class="hint" id="withdraw-error" style="color:var(--accent-coral-ink);display:none"></p>
+
+    <button class="btn btn-primary btn-block" id="continue-withdraw-btn" style="margin-top:var(--space-4)">Continue</button>
+    <button class="btn btn-ghost btn-block" id="cancel-withdraw-btn" style="margin-top:var(--space-2)">Cancel</button>
+  </div>
+</div>
+
+<!-- Confirmation sheet -->
+<div class="sheet-overlay" id="confirm-overlay">
+  <div class="sheet">
+    <h2>Confirm withdrawal</h2>
+    <div class="summary-row"><span>Amount</span><span class="mono" id="confirm-amount">₹0.00</span></div>
+    <div class="summary-row"><span>Method</span><span id="confirm-method">UPI</span></div>
+    <div class="summary-row"><span>Destination</span><span id="confirm-dest" class="mono">—</span></div>
+    <p class="hint">Usually processed after verification.</p>
+    <button class="btn btn-primary btn-block" id="confirm-withdraw-btn" style="margin-top:var(--space-4)">Confirm withdrawal</button>
+    <button class="btn btn-ghost btn-block" id="cancel-confirm-btn" style="margin-top:var(--space-2)">Cancel</button>
+  </div>
+</div>
+
+<!-- Success sheet -->
+<div class="sheet-overlay" id="success-overlay">
+  <div class="sheet" style="text-align:center">
+    <div style="font-size:2.4rem">✅</div>
+    <h2 style="margin-top:var(--space-3)">Withdrawal request submitted</h2>
+    <p class="hint">Request ID: <span class="mono" id="success-request-id">—</span></p>
+    <a class="btn btn-primary btn-block" href="pages/transactions.html" style="margin-top:var(--space-5)">View Withdrawals</a>
+    <button class="btn btn-ghost btn-block" id="close-success-btn" style="margin-top:var(--space-2)">Done</button>
+  </div>
+</div>
+
+<script type="module" src="js/pages/wallet.js"></script>
+</body>
+</html>

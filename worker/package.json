@@ -1,0 +1,16 @@
+{
+  "name": "earnivo-worker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "secrets": "echo 'Run: wrangler secret put FIREBASE_PROJECT_ID / FIREBASE_CLIENT_EMAIL / FIREBASE_PRIVATE_KEY / POSTBACK_SECRET'"
+  },
+  "dependencies": {
+    "jose": "^5.6.3"
+  },
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  }
+}

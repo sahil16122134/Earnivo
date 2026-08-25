@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Refer & Earn</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="back-row"><a href="../profile.html" class="back-btn">←</a></div>
+    <div class="page-title"><h1>Refer & Earn</h1></div>
+
+    <div class="stack">
+      <div class="card-glass balance-card">
+        <div class="balance-label">Your referral reward</div>
+        <div class="balance-amount mono">₹20</div>
+        <p class="hint" style="margin-top:6px">Earn when a referred user completes the required qualifying activity.</p>
+
+        <div class="ref-code">
+          <span class="code" id="ref-code">—</span>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-sm btn-secondary" id="copy-btn">Copy</button>
+            <button class="btn btn-sm btn-primary" id="share-btn">Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="wallet-stats">
+        <div class="wallet-stat"><div class="v mono" id="stat-total">0</div><div class="l">Referrals</div></div>
+        <div class="wallet-stat"><div class="v mono" id="stat-qualified">0</div><div class="l">Qualified</div></div>
+        <div class="wallet-stat"><div class="v mono" id="stat-earned">₹0</div><div class="l">Earned</div></div>
+      </div>
+
+      <div>
+        <div class="section-head"><h2>Referral history</h2></div>
+        <div class="chip-row">
+          <button class="chip active" data-c="all">All</button>
+          <button class="chip" data-c="pending">Pending</button>
+          <button class="chip" data-c="qualified">Qualified</button>
+          <button class="chip" data-c="rewarded">Rewarded</button>
+        </div>
+        <div class="card" id="ref-list" style="margin-top:var(--space-3)">
+          <div class="skel" style="height:40px"></div>
+        </div>
+      </div>
+
+      <ad-slot placement="referral-below-history"></ad-slot>
+    </div>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<script type="module" src="../js/pages/referral.js"></script>
+</body>
+</html>

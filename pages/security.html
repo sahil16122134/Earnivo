@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — Security</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="back-row"><a href="javascript:history.back()" class="back-btn">←</a></div>
+    <div class="doc">
+      <h1>Security</h1>
+      <div class="updated">Last updated: August 2026</div>
+      
+<h2>Account security</h2>
+<p>Your account is protected by your sign-in provider (Google, email/password, etc.) through Firebase Authentication.</p>
+<p class="hint">There isn't a sign-in-activity log or in-app security settings panel in this version — password changes and sign-in management happen through your provider (e.g. your Google Account settings, if you signed in with Google).</p>
+<h2>Tips</h2>
+<ul>
+  <li>Never share your login link or verification codes with anyone.</li>
+  <li>Earnivo will never ask for your password over chat or email.</li>
+</ul>
+
+    </div>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<script type="module">
+  import { renderNav, initTheme } from "../js/nav.js";
+  renderNav("profile", "../"); initTheme();
+</script>
+</body>
+</html>

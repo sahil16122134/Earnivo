@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earnivo — How It Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/components/modal.css">
+<link rel="stylesheet" href="../css/components/toast.css">
+<link rel="stylesheet" href="../css/components/ad-slot.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main-col">
+    <div class="back-row"><a href="javascript:history.back()" class="back-btn">←</a></div>
+    <div class="doc">
+      <h1>How It Works</h1>
+      <div class="updated">Last updated: August 2026</div>
+      
+<ol class="step-list">
+  <li>Create your account</li>
+  <li>Browse available opportunities on the Earn page</li>
+  <li>Complete the qualifying activity for a task, survey, offer or ad</li>
+  <li>Wait for verification — most rewards are confirmed automatically via provider callback</li>
+  <li>Withdraw your balance once you reach the minimum threshold</li>
+</ol>
+
+    </div>
+  </main>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<script type="module">
+  import { renderNav, initTheme } from "../js/nav.js";
+  renderNav("profile", "../"); initTheme();
+</script>
+</body>
+</html>
