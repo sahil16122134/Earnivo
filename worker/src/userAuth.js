@@ -51,7 +51,7 @@ export async function handleEnsureUser(request, env, firestore) {
 }
 
 function generateReferralCode() {
-  return `EARN${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
+  return `EARNIVO${Math.floor(1000 + Math.random() * 9000)}`;
 }
 
 async function backfillReferralCodeIfMissing(firestore, uid, profile) {
