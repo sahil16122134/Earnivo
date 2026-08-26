@@ -30,7 +30,7 @@ compatibility_flags = ["nodejs_compat"]
 # Example for a custom domain: "https://earnivo.yourdomain.com"
 # You may add a local dev origin too, e.g.:
 #   "https://yourusername.github.io,http://localhost:5500"
-ALLOWED_ORIGIN = "https://sahil16122134.github.io,https://earnivo.pages.dev"
+ALLOWED_ORIGIN = "https://sahil16122134.github.io,https://earnivo.pages.dev,https://earnivo-edac2.web.app"
 ENVIRONMENT = "production"
 # Set to "true" only after integrating a real server-side ad provider postback.
 # Leaving this "false" disables the /watch-ad-reward endpoint so it cannot be
